@@ -1,7 +1,17 @@
 -- ============================================
 -- 单词学习应用 · 数据库结构（Supabase PostgreSQL）
 -- 使用方法：Supabase 控制台 → SQL Editor → 粘贴运行
+-- 首次安装可直接运行；若之前建过其他表结构，下面的 DROP 会自动清理。
 -- ============================================
+
+-- 清理可能存在的旧表（首次安装无影响；重置时会清空数据）
+drop table if exists public.test_records cascade;
+drop table if exists public.tests cascade;
+drop table if exists public.words cascade;
+drop table if exists public.lists cascade;
+-- 兼容之前对话中出现的另一套表名
+drop table if exists public.word_list_rel cascade;
+drop table if exists public.word_lists cascade;
 
 -- 分组表（如：必修一 Unit1、高考真题、今日任务）
 create table if not exists public.lists (

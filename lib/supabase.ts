@@ -1,7 +1,11 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+// 兼容新版 Supabase 的 Publishable key（sb_publishable_ 开头）和旧版 anon key
+const supabaseAnonKey =
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  "";
 
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
